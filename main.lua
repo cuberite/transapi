@@ -73,7 +73,7 @@ function HandleLanguageCommand ( Split, Player )
 	end
 
 	-- Set the language.
-	local success = g_UserData:SetValue( Player:GetName(), "language" Split[2] )
+	local success = g_UserData:SetValue( Player:GetName(), "language", Split[2] )
 	g_UserData:WriteFile()
 
 	if not success then
