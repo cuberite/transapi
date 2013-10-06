@@ -27,7 +27,7 @@ function Initialize( Plugin )
 
 	-- Load the userdata file.
 	g_UserData = cIniFile( g_PluginDir .. "/userdata.ini" )
-	if g_UserData ~= true then
+	if g_UserData == nil then
 		LOGERROR( "TransAPI INI file could not be opened!" )
 	end
 
