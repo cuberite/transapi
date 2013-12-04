@@ -7,6 +7,7 @@ g_ConsoleLang   = "en"
 -- Global Variables
 g_Plugin        = nil
 g_PluginDir     = ""
+g_DataLoc       = ""
 g_UserData      = nil
 
 -- START WITH DA AWESOME!
@@ -36,8 +37,8 @@ end
 function GetLanguage( Player )
 
 	-- Returns a language to use.
-	if g_UserData:ReadFile() == true then
-		local userLang = g_UserData:GetValueSet( g_DataLoc, Player:GetName(), "language", "false" )
+	if g_UserData:ReadFile(g_DataLoc) then
+		local userLang = g_UserData:GetValueSet( Player:GetName(), "language", "false" )
 		g_UserData:WriteFile(g_DataLoc)
 	end
 
@@ -59,7 +60,7 @@ function HandleLanguageCommand( Split, Player )
 	-- If the user is not setting the language, tell them the currently selected one.
 	if #Split ~= 2 then
 
-		local userLang = g_UserData:GetValueSet( g_DataLoc, Player:GetName(), "language", "false" )
+		local userLang = g_UserData:GetValueSet( Player:GetName(), "language", "false" )
 		if userLang == "false" then
 			return g_ServerLang
 		else
@@ -69,7 +70,7 @@ function HandleLanguageCommand( Split, Player )
 	end
 
 	-- Set the language.
-	local success = g_UserData:SetValue( g_DataLoc, Player:GetName(), "language", Split[2] )
+	local success = g_UserData:SetValue( Player:GetName(), "language", Split[2] )
 	g_UserData:WriteFile(g_DataLoc)
 
 	if not success then
