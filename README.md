@@ -22,4 +22,4 @@ Commands
 Permissions
 -----------
 
- * _tranapi.setlang_ - Allows use of the /language command.
+ * _transapi.setlang_ - Allows use of the /language command.
